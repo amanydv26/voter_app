@@ -8,6 +8,23 @@ const candidateSchema = new mongoose.Schema({
         type:String,
         require:true
     },
-
-    
+    votes:[
+        {
+            user:{
+                type:mongoose.Schema.ObjectId,
+                require:true
+            },
+            voteAt:{
+                type:Date,
+                default:Date.now()
+            }
+        }
+    ],
+    voteCount:{
+        type:Number,
+        default:0
+    }
 })
+
+const candidate = mongoose.model('Candidate' , candidateSchema);
+model.exports = candidate

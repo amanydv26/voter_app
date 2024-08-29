@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     },
     role:{
         type:String,
-        enum:['admin' , 'voter'],
+        enum:['admin','voter'],
         default:'voter'
     },
     aadharCard:{
