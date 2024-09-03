@@ -27,4 +27,4 @@ const candidateSchema = new mongoose.Schema({
 })
 
 const candidate = mongoose.model('Candidate' , candidateSchema);
-model.exports = candidate
+module.exports = candidate
