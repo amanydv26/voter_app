@@ -29,12 +29,14 @@ router.post('/signup',async(req,res)=>{
 router.post('/login',async(req,res)=>{
     try{
         const {aadharCard,password} = req.body;
+        console.log(aadharCard);
+        console.log(password);
   // Check if aadharCardNumber or password is missing
-  if (!aadharCardNumber || !password) {
+  if (!aadharCard || !password) {
     return res.status(400).json({ error: 'Aadhar Card Number and password are required' });
 }
         const user = await User.findOne({aadharCard:aadharCard});
-        if(!user||!(await User.comparePassword(password))){
+        if(!user||!(await user.comparePassword(password))){
             return res.status(401).json({error:"Invalid username or password"})
 
         }
