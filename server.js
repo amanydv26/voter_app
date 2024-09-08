@@ -10,7 +10,7 @@ const {jwtAuthMiddleware} = require('./jwt')
 
 const UserRoutes = require('./routes/userRoutes');
 const CandidateRoutes = require('./routes/candidate');
-app.use('/user',jwtAuthMiddleware,UserRoutes);
+app.use('/user',UserRoutes);
 app.use('/candidate',jwtAuthMiddleware,CandidateRoutes);
 app.listen(3000,()=>{
     console.log("server is running");

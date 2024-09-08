@@ -8,7 +8,10 @@ const {jwtAuthMiddleware, generateToken} = require('../jwt')
 router.post('/signup',async(req,res)=>{
     try{
     const data = req.body
-
+    const adminuser = await User.findOne({role:'admin'})
+    if(data.role ==='admin' && adminuser){
+        return res.status(400).json({ error: 'Admin user already exists' });
+    }
     const newUser = new User(data);
     const response = await newUser.save();
     console.log("data saved - new user verified")
